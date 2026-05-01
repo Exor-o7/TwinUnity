@@ -15,7 +15,6 @@ type FormState = {
   status: ListingStatus;
   set_name: string;
   card_number: string;
-  condition: string;
   grade: string;
   price: string;
   quantity: string;
@@ -32,7 +31,6 @@ const emptyForm: FormState = {
   status: "draft",
   set_name: "",
   card_number: "",
-  condition: "",
   grade: "",
   price: "",
   quantity: "1",
@@ -51,7 +49,6 @@ function formFromListing(listing: Listing): FormState {
     status: listing.status,
     set_name: listing.set_name ?? "",
     card_number: listing.card_number ?? "",
-    condition: listing.condition ?? "",
     grade: listing.grade ?? "",
     price:
       typeof listing.price_cents === "number"
@@ -80,7 +77,7 @@ function formToListingInput(form: FormState): ListingInput {
     status: form.status,
     set_name: toNullable(form.set_name),
     card_number: toNullable(form.card_number),
-    condition: toNullable(form.condition),
+    condition: null,
     grade: toNullable(form.grade),
     price_cents: price ? Math.round(Number(price) * 100) : null,
     quantity: Number.parseInt(form.quantity, 10) || 0,
@@ -399,6 +396,14 @@ export function AdminDashboard() {
         <form className="form-grid" onSubmit={saveListing}>
           <div className="grid two">
             <div className="field">
+              <label htmlFor="set_name">Set</label>
+              <input
+                id="set_name"
+                value={form.set_name}
+                onChange={(event) => updateField("set_name", event.target.value)}
+              />
+            </div>
+            <div className="field">
               <label htmlFor="name">Name</label>
               <input
                 id="name"
@@ -407,13 +412,25 @@ export function AdminDashboard() {
                 required
               />
             </div>
+          </div>
+
+          <div className="grid two">
             <div className="field">
-              <label htmlFor="slug">Slug</label>
+              <label htmlFor="card_number">Card Number</label>
               <input
-                id="slug"
-                value={form.slug}
-                onChange={(event) => updateField("slug", event.target.value)}
-                required
+                id="card_number"
+                value={form.card_number}
+                onChange={(event) =>
+                  updateField("card_number", event.target.value)
+                }
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="grade">Grade</label>
+              <input
+                id="grade"
+                value={form.grade}
+                onChange={(event) => updateField("grade", event.target.value)}
               />
             </div>
           </div>
@@ -443,8 +460,8 @@ export function AdminDashboard() {
                   updateField("intent", event.target.value as ListingIntent)
                 }
               >
-                <option value="buy">Buy Online</option>
-                <option value="sell">Sell / Looking To Buy</option>
+                <option value="buy">Buy</option>
+                <option value="sell">Sell</option>
                 <option value="trade">Trade</option>
               </select>
             </div>
@@ -475,46 +492,6 @@ export function AdminDashboard() {
                 value={form.quantity}
                 onChange={(event) => updateField("quantity", event.target.value)}
                 required
-              />
-            </div>
-          </div>
-
-          <div className="grid two">
-            <div className="field">
-              <label htmlFor="set_name">Set</label>
-              <input
-                id="set_name"
-                value={form.set_name}
-                onChange={(event) => updateField("set_name", event.target.value)}
-              />
-            </div>
-            <div className="field">
-              <label htmlFor="card_number">Card Number</label>
-              <input
-                id="card_number"
-                value={form.card_number}
-                onChange={(event) =>
-                  updateField("card_number", event.target.value)
-                }
-              />
-            </div>
-          </div>
-
-          <div className="grid two">
-            <div className="field">
-              <label htmlFor="condition">Condition</label>
-              <input
-                id="condition"
-                value={form.condition}
-                onChange={(event) => updateField("condition", event.target.value)}
-              />
-            </div>
-            <div className="field">
-              <label htmlFor="grade">Grade</label>
-              <input
-                id="grade"
-                value={form.grade}
-                onChange={(event) => updateField("grade", event.target.value)}
               />
             </div>
           </div>
