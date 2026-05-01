@@ -7,7 +7,8 @@ import { CART_UPDATED_EVENT, getCartItemCount } from "@/lib/cart";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/new-arrivals", label: "New Arrivals" }
+  { href: "/new-arrivals", label: "New Arrivals" },
+  { href: "/sold", label: "Recently Sold" }
 ];
 
 const navGroups = [

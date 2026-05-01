@@ -674,6 +674,14 @@ h2 {
   transform: translateY(-4px);
 }
 
+.listing-card.sold {
+  opacity: 0.82;
+}
+
+.listing-card.sold .listing-image img {
+  filter: grayscale(0.45) brightness(0.72);
+}
+
 .listing-card-body {
   display: grid;
   gap: 0.7rem;
@@ -715,7 +723,43 @@ h2 {
   border-radius: 20px 20px 0 0;
   min-height: 0;
   max-height: none;
+  position: relative;
   width: 100%;
+}
+
+.sold-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 1;
+  border: 1px solid rgb(255 255 255 / 34%);
+  border-radius: 999px;
+  background: rgb(0 0 0 / 78%);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  padding: 0.36rem 0.72rem;
+  text-transform: uppercase;
+}
+
+.sold-badge.detail {
+  font-size: 1rem;
+  left: 1rem;
+  top: 1rem;
+}
+
+.sold-label {
+  width: fit-content;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 999px;
+  background: rgb(0 0 0 / 62%);
+  color: #fff;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  margin: 0 0 0.85rem;
+  padding: 0.38rem 0.82rem;
+  text-transform: uppercase;
 }
 
 .listing-image img {

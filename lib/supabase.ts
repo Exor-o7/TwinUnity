@@ -66,6 +66,27 @@ export async function getPublishedListings() {
   return data as Listing[];
 }
 
+export async function getSoldListings() {
+  const supabase = createSupabaseAdminClient();
+
+  if (!supabase) {
+    return sampleListings.filter((listing) => listing.status === "sold");
+  }
+
+  const { data, error } = await supabase
+    .from("listings")
+    .select("*")
+    .eq("status", "sold")
+    .order("updated_at", { ascending: false });
+
+  if (error) {
+    console.error("Unable to load sold listings", error);
+    return sampleListings.filter((listing) => listing.status === "sold");
+  }
+
+  return data as Listing[];
+}
+
 export async function getListingBySlug(slug: string) {
   const supabase = createSupabaseAdminClient();
 

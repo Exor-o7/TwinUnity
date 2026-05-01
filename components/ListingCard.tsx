@@ -8,9 +8,13 @@ type ListingCardProps = {
 
 export function ListingCard({ listing }: ListingCardProps) {
   const primaryImage = listing.image_urls[0];
+  const isSold = listing.status === "sold";
 
   return (
-    <Link className="listing-card" href={`/listings/${listing.slug}`}>
+    <Link
+      className={isSold ? "listing-card sold" : "listing-card"}
+      href={`/listings/${listing.slug}`}
+    >
       <div className="listing-image">
         {primaryImage ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -18,6 +22,7 @@ export function ListingCard({ listing }: ListingCardProps) {
         ) : (
           <span>Twin Unity</span>
         )}
+        {isSold ? <span className="sold-badge">Sold</span> : null}
       </div>
       <div className="listing-card-body">
         <h3>{listing.name}</h3>

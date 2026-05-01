@@ -15,12 +15,13 @@ export default async function ListingDetailPage({
   const { slug } = await params;
   const listing = await getListingBySlug(slug);
 
-  if (!listing || listing.status !== "published") {
+  if (!listing || !["published", "sold"].includes(listing.status)) {
     notFound();
   }
 
-  const canAddToCart = listing.price_cents !== null;
-  const canCheckout = listing.price_cents !== null && listing.quantity > 0;
+  const isSold = listing.status === "sold";
+  const canAddToCart = !isSold && listing.price_cents !== null;
+  const canCheckout = !isSold && listing.price_cents !== null && listing.quantity > 0;
   const primaryImage = listing.image_urls[0];
 
   return (
@@ -35,15 +36,21 @@ export default async function ListingDetailPage({
             ) : (
               <span>Twin Unity</span>
             )}
+            {isSold ? <span className="sold-badge detail">Sold</span> : null}
           </div>
 
           <article>
+            {isSold ? <p className="sold-label">Sold</p> : null}
             <h1>{listing.name}</h1>
             <p className="price">{formatMoney(listing.price_cents)}</p>
             <p className="lead">{listing.description}</p>
 
             <div className="actions">
-              {canAddToCart ? (
+              {isSold ? (
+                <button className="btn secondary" disabled type="button">
+                  Sold
+                </button>
+              ) : canAddToCart ? (
                 <>
                   {canCheckout ? (
                     <CheckoutButton listingId={listing.id} />
