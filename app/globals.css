@@ -943,7 +943,13 @@ h2 {
   border-radius: 12px;
   background: #03111d;
   color: var(--text);
+  line-height: 1.25;
   padding: 0.72rem 0.8rem;
+}
+
+.field input,
+.field select {
+  height: 3.08rem;
 }
 
 .field textarea {
