@@ -79,17 +79,27 @@ textarea {
 }
 
 .brand {
+  align-items: center;
   color: var(--text);
+  display: inline-flex;
+  gap: 0;
   font-weight: 800;
   font-size: 0.96rem;
   letter-spacing: 0.06em;
   flex: 0 0 auto;
-  margin-right: 0.65rem;
-  padding-right: 1.25rem;
+  margin-right: 0.55rem;
+  padding-right: 0.65rem;
   border-right: 1px solid color-mix(in oklab, var(--blue) 45%, transparent);
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.brand-logo {
+  width: 5rem;
+  height: 2.9rem;
+  background: url("/twin-unity-logo-transparent.png") center / contain no-repeat;
+  flex: 0 0 auto;
 }
 
 .nav-panel {

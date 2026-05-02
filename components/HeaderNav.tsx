@@ -100,7 +100,8 @@ export function HeaderNav() {
       aria-label="Main navigation"
     >
       <Link className="brand" href="/" onClick={closeMenu}>
-        Twin Unity
+        <span className="brand-logo" aria-hidden="true" />
+        <span className="sr-only">Twin Unity</span>
       </Link>
 
       <button
