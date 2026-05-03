@@ -85,7 +85,7 @@ export function HeaderNav() {
 
     closeDropdownTimeout.current = setTimeout(() => {
       setOpenDropdown(null);
-    }, 2000);
+    }, 250);
   }
 
   function closeMenu() {
