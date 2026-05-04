@@ -6,7 +6,7 @@ The core website is near launch. Remaining business decisions are the shared lis
 
 ## Deployment
 
-Twin Unity is intended to be deployed on Vercel. The current public deployment can use the generated `*.vercel.app` URL until a custom production domain is ready.
+Twin Unity is deployed on Vercel: [twin-unity.vercel.app](https://twin-unity.vercel.app).
 
 ## Features
 
