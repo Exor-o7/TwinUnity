@@ -9,7 +9,7 @@ The core website is near launch. Remaining business decisions are the shared lis
 - Public storefront for browsing Pokemon card listings by category, search, newest arrivals, and sold inventory.
 - Listing detail pages with image galleries, pricing, availability, and purchase actions.
 - Cart flow for collecting purchasable listings before checkout.
-- Protected admin dashboard for creating, editing, drafting, publishing, selling, and archiving listings.
+- Protected admin dashboard for creating, editing, drafting, publishing, and marking listings as sold.
 - Supabase-backed data, authentication, and storage.
 - Typed validation and shared listing models across the app.
 
@@ -31,7 +31,7 @@ Twin Unity is built as a portfolio-quality production app for a real Pokemon car
 
 ## Admin Workflow
 
-Admins sign in at `/admin` with a Supabase Auth account whose email is included in `ADMIN_EMAILS`. Listings can be saved as `draft`, `published`, `sold`, or `archived`.
+Admins sign in at `/admin` with a Supabase Auth account whose email is included in `ADMIN_EMAILS`. Listings can be saved as `draft`, `published`, or `sold`.
 
 Listing intent controls how inventory appears to customers:
 
