@@ -466,6 +466,7 @@ export function AdminDashboard() {
   return (
     <div className="admin-layout">
       <section className="panel">
+        <p className="admin-account">Signed in as {session.user.email}</p>
         <div className="actions">
           <button className="btn secondary" type="button" onClick={signOut}>
             Sign Out

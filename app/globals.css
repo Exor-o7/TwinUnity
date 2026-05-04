@@ -1205,6 +1205,18 @@ h2 {
   align-items: start;
 }
 
+.admin-account {
+  width: fit-content;
+  border: 1px solid color-mix(in oklab, var(--green) 42%, var(--border));
+  border-radius: 999px;
+  background: rgb(103 232 59 / 8%);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  padding: 0.42rem 0.75rem;
+}
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
