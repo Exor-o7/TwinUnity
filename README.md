@@ -4,6 +4,10 @@ Twin Unity is a custom marketplace for buying, selling, and trading Pokemon card
 
 The core website is near launch. Remaining business decisions are the shared listing/contact email address and the final checkout provider. Stripe is currently one possible checkout option, but the production payment flow is not finalized.
 
+## Deployment
+
+Twin Unity is intended to be deployed on Vercel. The current public deployment can use the generated `*.vercel.app` URL until a custom production domain is ready.
+
 ## Features
 
 - Public storefront for browsing Pokemon card listings by category, search, newest arrivals, and sold inventory.
